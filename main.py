@@ -4,15 +4,19 @@ import os
 
 app = Flask(__name__)
 
-# dummy nya MD
+# dummy 
 commodities = [
-    {"id": 1, "title": "Ayam Negri", "img": "https://cdn.peternak.id/images/peternak-ayam-potong-1160x680.jpg"},
-    {"id": 2, "title": "Cabe Merah", "img": "https://storage.googleapis.com/bucket-model-daerah/06bb004d-816b-40b6-97ce-22d9a00e6629.jpg"}
+    {"id": 1, "title": "Daging Ayam", "img": "https://cdn.peternak.id/images/peternak-ayam-potong-1160x680.jpg"},
+    {"id": 2, "title": "Cabe Merah", "img": "https://storage.googleapis.com/bucket-model-daerah/06bb004d-816b-40b6-97ce-22d9a00e6629.jpg"},
+    {"id": 3, "title": "Bawang Merah", "img": "https://cdn.peternak.id/images/peternak-ayam-potong-1160x680.jpg"},
+    {"id": 4, "title": "Bawang Putih", "img": "https://cdn.peternak.id/images/peternak-ayam-potong-1160x680.jpg"},
 ]
 
 provinces = [
-    {"id": 1, "name": "Jawa Barat", "image": "https://storage.googleapis.com/bucket-model-daerah/images.png"},
-    {"id": 2, "name": "Jawa Timur", "image": "https://storage.googleapis.com/bucket-model-daerah/images%20(1).png"}
+    {"id": 1, "name": "Jawa Barat", "img": "https://storage.googleapis.com/bucket-model-daerah/images.png"},
+    {"id": 2, "name": "Jawa Timur", "img": "https://storage.googleapis.com/bucket-model-daerah/images%20(1).png"},
+    {"id": 3, "name": "Jawa Tengah", "img": "https://storage.googleapis.com/bucket-model-daerah/images.png"},
+    {"id": 4, "name": "Ambon", "img": "https://storage.googleapis.com/bucket-model-daerah/images%20(1).png"}
 ]
 
 @app.route('/commodities', methods=['GET'])
@@ -23,6 +27,7 @@ def get_commodities():
 def get_provinces(commodity_id):
     return jsonify({"error": False, "message": "success", "listProvinces": provinces})
 
+# machine learning
 @app.route('/commodities/<int:commodity_id>/provinces/<int:province_id>/inflation-predictions', methods=['GET'])
 def get_inflation_predictions(commodity_id, province_id):
     # modelnya use based on commodity_id
